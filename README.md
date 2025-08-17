@@ -43,8 +43,8 @@ cp client/.env.example client/.env
 1. Setup postgres database
    ```bash
    cd server
-   npx prisma migrate dev
    npx prisma generate
+   npx prisma migrate dev 
    ```
 2. Start app
    ```bash
