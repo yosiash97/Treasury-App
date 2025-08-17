@@ -17,6 +17,7 @@ is static - so no need to repeatedly hit external API for popular requests.
 2. More robust test coverage
 3. Add authentication and apply some type of rules on amount of orders/total $ order amount per user.
 4. It'd be cool to use websockets for real time data + allow automatic order execution based on certain user inputs.
+5. Mobile design on the frontend is a must as well.
 
 ## Project Structure
 
@@ -27,38 +28,34 @@ is static - so no need to repeatedly hit external API for popular requests.
 └── README.md
 ```
 # Getting Started
-1. Install dependencies
-   ```bash
-   npm run install:all
-   ```
-2. Setup postgres database
+**Prerequisites:** PostgreSQL must be running
+```bash
+brew services start postgresql  # macOS
+sudo service postgresql start   # Linux
+```
+Environment Setup
+Copy environment files
+```bash
+cp server/.env.example server/.env
+cp client/.env.example client/.env
+# Edit server/.env with your PostgreSQL credentials
+```
+1. Setup postgres database
    ```bash
    cd server
    npx prisma migrate dev
    npx prisma generate
    ```
-3. Start app
+2. Start app
    ```bash
-   npm run dev
+   npm run start
    ```
-4. Run tests(both Jest component & E2E)
+3. Run tests(both Jest component & E2E)
    ```bash
    cd server
    npm run test
    npm run test:e2e
    ```
-# Postgres Database Setup
-1. Generate Prisma Client
-   ```bash
-   cd server
-   npx prisma generate
-   ```
-3. Apply migrations
-   ```bash
-   cd server
-   npx prisma migrate dev
-   ```
-3. View server/prisma/schema.prisma to see schema
 # Endpoints
 1. ```GET /yields``` get all yield data
 2. ```POST /orders``` create an order
