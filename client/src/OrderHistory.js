@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 
 const styles = {
-  container: {
-    maxWidth: 1200,
-    margin: "0 auto",
-    padding: "24px",
+  page: {
     fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial",
+    minHeight: "100vh",
     background: "#0b1020",
     color: "#e6e9ef",
-    minHeight: "100vh",
+    padding: "24px",
+    boxSizing: "border-box",
   },
   card: {
+    maxWidth: 1200,
+    margin: "0 auto",
     background: "#121a35",
     borderRadius: 16,
     boxShadow: "0 8px 30px rgba(0,0,0,0.35)",
@@ -163,7 +164,7 @@ export default function OrderHistory({ onBack }) {
 
   if (loading) {
     return (
-      <div style={styles.container}>
+      <div style={styles.page}>
         <div style={styles.card}>
           <div style={styles.loading}>Loading order history...</div>
         </div>
@@ -173,7 +174,7 @@ export default function OrderHistory({ onBack }) {
 
   if (error) {
     return (
-      <div style={styles.container}>
+      <div style={styles.page}>
         <div style={styles.card}>
           <div style={styles.error}>
             {error}
@@ -188,7 +189,7 @@ export default function OrderHistory({ onBack }) {
   }
 
   return (
-    <div style={styles.container}>
+    <div style={styles.page}>
       <div style={styles.card}>
         <div style={styles.header}>
           <h1 style={styles.title}>Order History</h1>
