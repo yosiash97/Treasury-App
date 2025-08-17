@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const styles = {
   container: {
-    maxWidth: 1200, // Increased from 800 to match your main component
+    maxWidth: 1200,
     margin: "0 auto",
     padding: "24px",
     fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial",

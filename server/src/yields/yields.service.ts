@@ -31,7 +31,7 @@ export class YieldsService {
     
       const cacheKey = `treasury:yields:${year}:${month || 'all'}`;
       
-      // Check cache first
+      // Check cache first, if its a hit we serve it to reduce load on external api
       const cached = await this.cacheManager.get<YieldsResult>(cacheKey);
       if (cached) {
         return cached;
@@ -58,7 +58,7 @@ export class YieldsService {
         currentDate.getFullYear() === year && 
         currentDate.getMonth() + 1 === month;
       
-      // Set different TTL based on whether it's current month data
+      // TTL different, if its before this month cache longer than for current month (as they might change)
       const ttl = isCurrentMonth 
         ? 60 * 60 * 1000  // 1 hour for current month
         : 24 * 60 * 60 * 1000; // 24 hours for historical data

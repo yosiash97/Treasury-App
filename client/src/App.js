@@ -254,7 +254,8 @@ export default function YieldCurveApp() {
       setFetchingNewData(false);
     }
   };
-
+  // this will allow user to make buy order, POST request to backend
+  // we store light weight data about order so user can look up later.
   const handleBuy = async () => {
     if (!orderForm.term || !orderForm.amount) {
       setBuyMsg('Please enter both term and amount.');
@@ -384,14 +385,6 @@ export default function YieldCurveApp() {
                 const newDate = e.target.value;
                 if (!newDate) return;
                 
-                // // Check if selected date is a weekend
-                // const selectedDay = new Date(newDate).getDay();
-                // if (selectedDay === 0 || selectedDay === 6) { // 0 = Sunday, 6 = Saturday
-                //   const dayName = selectedDay === 0 ? 'Sunday' : 'Saturday';
-                //   alert(`Treasury markets are closed on ${dayName}. Please select a weekday (Monday-Friday) when markets are open.`);
-                //   return;
-                // }
-                
                 const selectedDateTime = new Date(newDate);
                 const selectedYear = selectedDateTime.getFullYear();
                 const selectedMonth = selectedDateTime.getMonth() + 1;
@@ -469,8 +462,6 @@ export default function YieldCurveApp() {
             {buyMsg}
           </div>
         )}
-
-
 
         {/* Current Yields Display */}
         <div style={styles.yieldCards}>

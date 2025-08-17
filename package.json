@@ -1,0 +1,13 @@
+{
+    "name": "treasury-yields-app",
+    "version": "1.0.0",
+    "scripts": {
+      "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+      "server:dev": "cd server && npm run start:dev",
+      "client:dev": "cd client && npm start",
+      "install:all": "cd client && npm install && cd ../server && npm install"
+    },
+    "devDependencies": {
+      "concurrently": "^8.2.0"
+    }
+  }
