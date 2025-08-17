@@ -1,13 +1,16 @@
 {
-    "name": "treasury-yields-app",
-    "version": "1.0.0",
-    "scripts": {
-      "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
-      "server:dev": "cd server && npm run start:dev",
-      "client:dev": "cd client && npm start",
-      "install:all": "cd client && npm install && cd ../server && npm install"
-    },
-    "devDependencies": {
-      "concurrently": "^8.2.0"
-    }
+  "name": "treasury-yields-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run setup && npm run dev",
+    "setup": "npm run install:all && npm run db:setup",
+    "db:setup": "cd server && npx prisma migrate dev && npx prisma generate",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "cd server && npm run start:dev",
+    "client:dev": "cd client && npm start",
+    "install:all": "cd client && npm install && cd ../server && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
   }
+}
